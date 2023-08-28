@@ -3,9 +3,8 @@ document.addEventListener("DOMContentLoaded", () => {
         const data = document.getElementById("input").value
         document.getElementById("list").innerHTML = data
 
-
-        const [tab] = await chrome.tabs.query({active: true, lastFocusedWindow: true});
-        const response = await chrome.tabs.sendMessage(tab.id, {data: data});
-        console.log(response);
+        // send tab url & form input
+        const [tab] = await chrome.tabs.query({ active: true, lastFocusedWindow: true });
+        await chrome.tabs.sendMessage(tab.id, {data: data});
     })
 });

@@ -1,5 +1,4 @@
-chrome.runtime.onMessage.addListener(
-    function(request) {
+chrome.runtime.onMessage.addListener(request => {
     console.log(request.data)
     }
 );
