@@ -3,7 +3,6 @@ document.addEventListener("DOMContentLoaded", () => {
     const watchLinksList = document.getElementById("list")
     const button = document.getElementById("getUrl")
 
-
     // pre-populate list with existing items from storage
     chrome.storage.sync.get(["links"], result => {
         if (result.links) {
@@ -16,13 +15,15 @@ document.addEventListener("DOMContentLoaded", () => {
     button.addEventListener("click", async () => {
         const data = document.getElementById("input").value
 
-        console.log(data)
         addLinkToList(data)
         saveLink(data)
-        
+
+        const allLinks = await chrome.storage.sync.get(null)
+        console.log(allLinks)
+
         // send tab url & form input
         const [tab] = await chrome.tabs.query({ active: true, lastFocusedWindow: true });
-        await chrome.tabs.sendMessage(tab.id, {data: data, tabURL: tab.url});
+        await chrome.tabs.sendMessage(tab.id, {data: allLinks, tabURL: tab.url});
     })
 
     const addLinkToList = async (link) => {
@@ -38,4 +39,5 @@ document.addEventListener("DOMContentLoaded", () => {
         chrome.storage.sync.set({links: links})
         })
     }
+
 });

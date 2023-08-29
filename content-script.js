@@ -1,5 +1,8 @@
 chrome.runtime.onMessage.addListener(request => {
-    console.log(request.data)
-    console.log(request.tabURL)
+    const links = request.data.links
+    if(links.includes(request.tabURL)) {
+        console.log("true")
+        document.body.classList.add('blacked-out')
+        }
     }
 );
