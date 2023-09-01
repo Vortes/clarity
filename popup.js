@@ -12,6 +12,13 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     })
 
+    chrome.runtime.onMessage.addListener((request , _, sendResponse) => {
+        if (request.greeting === "hello") {
+            sendResponse({farewell: "goodbye"})
+            return true
+        }
+    })
+
     button.addEventListener("click", async () => {
         const data = document.getElementById("input").value
 
