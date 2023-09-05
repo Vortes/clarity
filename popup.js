@@ -49,11 +49,6 @@ document.addEventListener("DOMContentLoaded", () => {
         saveLink(data)
 
         const allLinks = await chrome.storage.sync.get(null)
-        console.log(allLinks)
-
-        // send tab url & form input
-        const [tab] = await chrome.tabs.query({ active: true, lastFocusedWindow: true });
-        await chrome.tabs.sendMessage(tab.id, {data: allLinks, tabURL: tab.url});
     })
 
 });
