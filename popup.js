@@ -1,32 +1,41 @@
 document.addEventListener("DOMContentLoaded", () => {
 
-    const watchLinksList = document.getElementById("list")
+    const userInputList = document.getElementById("list")
     const button = document.getElementById("getUrl")
 
   const AppendInput = async (link) => {
       const li = document.createElement("li")
-      li.innerHTML = link
-      watchLinksList.appendChild(li)
+      li.textContent = link
+      li.innerHTML += '<button class="delete-input-button">Delete</button>'
+      
+      // Add click event to delete button
+      const deleteInputButton = li.querySelector('.delete-input-button')
+      deleteInputButton.addEventListener('click', async()=> {
+        chrome.storage.sync.remove([link])
+        li.remove()
+      })
+      userInputList.appendChild(li)
   }
 
   const saveInputToStorage = async (link) => {
-      const results = await getInputs()
-      const links = results.links || []
-      links.push(link)
-      chrome.storage.sync.set({links: links})
+      // const results = await getInputs()
+      // const links = results.links || []
+      // links.push(link)
+      chrome.storage.sync.set({[link]: link})
+
   }
 
   const getInputs = async () => {
-    const result = await chrome.storage.sync.get(["links"])
+    const result = await chrome.storage.sync.get(null)
     return result
   }
 
-    // // pre-populate list with existing items from storage
-    chrome.storage.sync.get(["links"], result => {
-        if (result.links) {
-            result.links.forEach((link) => {
-                AppendInput(link)
-            })
+    // pre-populate list with existing items from storage
+    chrome.storage.sync.get(null, result => {
+        if (result) {
+          for(const input in result) {
+            AppendInput(input)
+          }
         }
     })
     
