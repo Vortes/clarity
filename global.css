@@ -9,3 +9,7 @@ body.blacked-out::after {
     background-color: black;
     z-index: 9999999;
 }
+
+#input {
+    display: flex;
+}
