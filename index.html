@@ -4,12 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="popup.js"></script>
+    <link rel="stylesheet" href="/dist/output.css">
     <title>Document</title>
 </head>
-<body>
-    <input id="input" type="text" placeholder="example.com">
-
-    <button type="button" id="getUrl">Submit</button>
+<body class="mx-6 my-4">
+    <div class="flex gap-x-2 mb-2">
+        <input class="border border-[#edeff1] rounded-md pl-2" id="input" type="text" placeholder="example.com">
+        <button class="bg-[#f4ebe4] text-[#18212A] px-4 py-2 rounded-md" type="button" id="getUrl">Submit</button>
+    </div>
     <ul id="list"></ul>
 </body>
 </html>
