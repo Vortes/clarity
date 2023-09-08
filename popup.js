@@ -5,10 +5,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const AppendInput = async (link) => {
       const li = document.createElement("li")
-      const styling = ["flex", "justify-between", "bg-[#edeff1]", "py-2", "px-4", "rounded-md"]
+      const styling = ["flex", "justify-between", "bg-[#edeff1]", "py-2", "px-4", "rounded-md", "mb-2"]
       li.classList.add(...styling)
       li.innerHTML += `<p>${link}</p>`
-      li.innerHTML += '<button class="delete-input-button">Delete</button>'
+      li.innerHTML += `<button class="delete-input-button">${"\u00D7"}</button>`
       
       // Add click event to delete button
       const deleteInputButton = li.querySelector('.delete-input-button')
