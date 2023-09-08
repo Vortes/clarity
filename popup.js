@@ -5,7 +5,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const AppendInput = async (link) => {
       const li = document.createElement("li")
-      li.textContent = link
+      const styling = ["flex", "justify-between", "bg-[#edeff1]", "py-2", "px-4", "rounded-md"]
+      li.classList.add(...styling)
+      li.innerHTML += `<p>${link}</p>`
       li.innerHTML += '<button class="delete-input-button">Delete</button>'
       
       // Add click event to delete button
