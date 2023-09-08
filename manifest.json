@@ -20,12 +20,10 @@
         "default_popup": "index.html"
     },
     "permissions": [
-        "tabs",
         "storage",
-        "activeTab"
+        "tabs"
     ],
     "background": {
         "service_worker": "background.js"
-    },
-    "host_permissions": ["https://*/*"]
+    }
 }

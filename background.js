@@ -6,6 +6,7 @@ const getLinks = async () => {
 const handleTabActivation = async () => {
     const [tab] = await chrome.tabs.query({ active: true, lastFocusedWindow: true });
     const url = tab.url;
+    console.log(url)
     const tabId = tab.id
     
     // Check to see if current URL matches any URL in the storage
