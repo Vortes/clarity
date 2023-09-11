@@ -2,7 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
-body.blacked-out::after {
+body.blacked-out {
     content: "";
     display: block;
     position: fixed;
@@ -10,8 +10,8 @@ body.blacked-out::after {
     left: 0;
     right: 0;
     bottom: 0;
-    background-color: black;
-    z-index: 9999999;
+    background-color: #f4ebe4;
+    z-index: 100;
 }
 
 #input {
